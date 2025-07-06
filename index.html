@@ -787,19 +787,14 @@ function renderProducts() {
         productCard.innerHTML = `
             <div class="product-img">
                 ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-                <img src="images/${product.image}" alt="${product.title}" style="width:100%;height:100%;object-fit:cover;">
+                <img src="${product.image}" alt="${product.title}" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="product-info">
                 <h3 class="product-title">${product.title}</h3>
                 <div class="product-price">
-                    $${product.price.toFixed(2)}
-                    ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
                 </div>
                 <div class="product-rating">
-                    ${renderRatingStars(product.rating)}
-                    <span>(${product.rating})</span>
                 </div>
-                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
             </div>
         `;
         
@@ -858,7 +853,7 @@ function renderHeroSlider() {
     heroSlides.forEach((slide, index) => {
         const slideElement = document.createElement('div');
         slideElement.className = `hero-slide ${index === 0 ? 'active' : ''}`;
-        slideElement.style.backgroundImage = `url('images/${slide.image}')`;
+        slideElement.style.backgroundImage = `url('${slide.image}')`;
         slideElement.style.backgroundSize = 'cover';
         slideElement.style.backgroundPosition = 'center';
         slideElement.style.height = '100%';
@@ -869,13 +864,6 @@ function renderHeroSlider() {
         slideElement.style.transition = 'left 0.5s ease';
         
         slideElement.innerHTML = `
-            <div class="slide-content" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:white; width:80%;">
-                <h2 style="font-size:2.5rem; margin-bottom:1rem;">${slide.title}</h2>
-                <p style="font-size:1.25rem; margin-bottom:1.5rem;">${slide.subtitle}</p>
-                <button class="slide-btn" style="padding:0.75rem 1.5rem; background-color:var(--primary-color); color:white; border:none; border-radius:4px; font-size:1rem; cursor:pointer;">
-                    ${slide.buttonText}
-                </button>
-            </div>
         `;
         
         heroSlider.appendChild(slideElement);
@@ -1025,7 +1013,7 @@ function renderCartItems() {
         
         cartItem.innerHTML = `
             <div class="cart-item-img">
-                <img src="images/${item.image}" alt="${item.title}" style="width:100%;height:100%;object-fit:cover;">
+                <img src="${item.image}" alt="${item.title}" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="cart-item-details">
                 <h4 class="cart-item-title">${item.title}</h4>
